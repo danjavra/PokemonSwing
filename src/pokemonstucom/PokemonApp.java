@@ -5,12 +5,16 @@
  */
 package pokemonstucom;
 
+import java.util.HashMap;
+
+
+
 /**
  *
  * @author DAM
  */
 public class PokemonApp extends javax.swing.JFrame {
-
+public static HashMap<String,Pokemon> pokemonlist = new HashMap<>();
     /**
      * Creates new form pokemon
      */
