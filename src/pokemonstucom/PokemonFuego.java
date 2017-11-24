@@ -5,6 +5,8 @@
  */
 package pokemonstucom;
 
+import java.util.Random;
+
 /**
  *
  * @author DAM
@@ -15,6 +17,16 @@ public class PokemonFuego extends Pokemon {
         super(nombre, ataque, defensa, ps);
     }
 
+    @Override
+    public boolean capturable() {
   
+      int r = new Random().nextInt((10 - 60) + 1) + 10;
+        
+        
+        return (r + getPs()) > (getAtaque() + getDefensa());  
+        
+    }
     
+
+      
 }

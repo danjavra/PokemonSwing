@@ -5,6 +5,9 @@
  */
 package pokemonstucom;
 
+import static java.lang.Math.random;
+import java.util.Random;
+
 /**
  *
  * @author DAM
@@ -25,6 +28,18 @@ public class PokemonAgua extends Pokemon{
 
     public void setTipoAgua(String tipoAgua) {
         this.tipoAgua = tipoAgua;
+    }
+
+    @Override
+   
+    
+    public boolean capturable() {
+        int r = new Random().nextInt((120 - 20) + 1) + 20;
+        
+        
+        return (r - getPs()) < getDefensa(); 
+        
+        
     }
     
     

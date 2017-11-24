@@ -5,6 +5,8 @@
  */
 package pokemonstucom;
 
+import java.util.Random;
+
 /**
  *
  * @author DAM
@@ -29,6 +31,14 @@ public class PokemonPlanta extends Pokemon{
     @Override
     public String toString() {
         return "PokemonPlanta{" + "habitat=" + habitat + '}';
+    }
+
+    @Override
+    public boolean capturable() {
+       
+        return ((Math.random()*50) - getAtaque()) > getPs(); 
+        
+    
     }
 
    
