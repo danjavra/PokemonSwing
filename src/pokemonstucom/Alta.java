@@ -6,6 +6,7 @@
 package pokemonstucom;
 
 
+import javax.swing.JOptionPane;
 import static pokemonstucom.PokemonApp.pokemonlist;
 /**
  *
@@ -75,7 +76,7 @@ public class Alta extends javax.swing.JDialog {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Tipo");
 
-        tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Agua", "Fuego", "Planta", " " }));
+        tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agua", "Fuego", "Planta", " " }));
         tipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoActionPerformed(evt);
@@ -215,7 +216,26 @@ public class Alta extends javax.swing.JDialog {
     }//GEN-LAST:event_menuActionPerformed
 
     private void tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoActionPerformed
-        
+    switch(tipo.getSelectedItem().toString()){
+        case "Fuego":
+            jLabel7.setVisible(false);
+            tipoAgua.setVisible(false);
+            tipoHabitat.setVisible(false);
+            jLabel8.setVisible(false);
+            break;
+        case "Agua":
+            jLabel7.setVisible(true);
+            tipoAgua.setVisible(true);
+            tipoHabitat.setVisible(false);
+            jLabel8.setVisible(false);
+            break;
+        case "Planta":
+            jLabel7.setVisible(false);
+            tipoAgua.setVisible(false);
+            tipoHabitat.setVisible(true);
+            jLabel8.setVisible(true);
+            break;
+    }        
     }//GEN-LAST:event_tipoActionPerformed
 
     private void tipoAguaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoAguaActionPerformed
@@ -228,18 +248,47 @@ public class Alta extends javax.swing.JDialog {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         boolean field = nombre.getText().isEmpty();
+        boolean habitatTipo = tipoHabitat.getText().isEmpty();
         String name = nombre.getText();
+        String type = tipo.getSelectedItem().toString();
         int attack = (Integer)ataque.getValue();
         int def = (Integer)defensa.getValue();
         int ps = (Integer)vida.getValue();
-        String type = tipo.getSelectedItem().toString();
-        String tipoagua = tipoAgua.getSelectedItem().toString();
-        String habitat = tipoHabitat.getText();
         
         if(pokemonlist.containsKey(name)){
-            
-        }
+            JOptionPane.showMessageDialog(this, "Este Pokemon ya está en la pokédex","Pokemon registrado anteriormente", JOptionPane.ERROR_MESSAGE);
         
+        }else if(field == true){
+            JOptionPane.showMessageDialog(this, "Indica el nombre del Pokemon","Campo nombre vacío", JOptionPane.ERROR_MESSAGE);
+        
+        }else {
+            switch(tipo.getSelectedItem().toString()){
+        
+                case "Fuego":
+            PokemonFuego f = new PokemonFuego(name,attack,def,ps);  
+            pokemonlist.put(f.getNombre(), f);
+            JOptionPane.showMessageDialog(this,"Se ha registrado correctamente");
+                     break;
+                case "Agua": 
+            String tipoagua = tipoAgua.getSelectedItem().toString();
+            PokemonAgua a = new PokemonAgua(tipoagua,name,attack,def,ps);  
+            pokemonlist.put(a.getNombre(), a);
+            JOptionPane.showMessageDialog(this,"Se ha registrado correctamente");
+                     break;
+                case "Planta":
+                    
+                    if(habitatTipo == true){
+                        JOptionPane.showMessageDialog(this, "Indica el tipo de habitat del Pokemon planta","Campo habitat vacío", JOptionPane.ERROR_MESSAGE); 
+                    }else{
+            String habitat = tipoHabitat.getText();
+            PokemonPlanta p = new PokemonPlanta(habitat,name,attack,def,ps);  
+            pokemonlist.put(p.getNombre(), p);
+            JOptionPane.showMessageDialog(this,"Se ha registrado correctamente");
+                     break;
+                    }
+            }
+            nombre.setText("");
+            tipoHabitat.setText("");
     }//GEN-LAST:event_aceptarActionPerformed
 
     /**
