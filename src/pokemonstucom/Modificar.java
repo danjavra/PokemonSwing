@@ -4,7 +4,14 @@
  * and open the template in the editor.
  */
 package pokemonstucom;
-
+import java.util.HashMap;
+import static pokemonstucom.PokemonApp.pokemonlist;
+import pokemonstucom.Pokemon;
+import pokemonstucom.PokemonApp;
+import pokemonstucom.PokemonStucom;
+import pokemonstucom.PokemonAgua;
+import pokemonstucom.PokemonFuego;
+import pokemonstucom.PokemonPlanta;
 /**
  *
  * @author DAM
@@ -56,6 +63,11 @@ public class Modificar extends javax.swing.JDialog {
         jLabel4.setText("Puntos Salud");
 
         jButton1.setText("Menu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Modificar");
 
@@ -122,6 +134,10 @@ public class Modificar extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

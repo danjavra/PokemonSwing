@@ -6,6 +6,7 @@
 package pokemonstucom;
 
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 
 
@@ -52,12 +53,32 @@ public static HashMap<String,Pokemon> pokemonlist = new HashMap<>();
         });
 
         jButton2.setText("Modificar ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Mostrar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Capturar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Totales");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,6 +122,38 @@ public static HashMap<String,Pokemon> pokemonlist = new HashMap<>();
         alta.setVisible(true);        
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+         if (pokemonlist.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay pokémon para mostrar", "Lista vacía", JOptionPane.ERROR_MESSAGE);
+       } else {Mostrar mostrar = new Mostrar(this, true);
+        mostrar.setLocationRelativeTo(null);
+        mostrar.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+    }
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      if (pokemonlist.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay pokémon para mostrar", "Lista vacía", JOptionPane.ERROR_MESSAGE);
+       } else {  Modificar modificar = new Modificar(this, true);
+        modificar.setLocationRelativeTo(null);
+        modificar.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+    }
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if (pokemonlist.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay pokémon para mostrar", "Lista vacía", JOptionPane.ERROR_MESSAGE);
+       } else {Capturar capturar = new Capturar(this, true);
+        capturar.setLocationRelativeTo(null);
+        capturar.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+    }
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        if (pokemonlist.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay pokémon para mostrar", "Lista vacía", JOptionPane.ERROR_MESSAGE);
+       } else {Totales total = new Totales(this, true);
+        total.setLocationRelativeTo(null);
+        total.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+    }
     /**
      * @param args the command line arguments
      */

@@ -4,7 +4,14 @@
  * and open the template in the editor.
  */
 package pokemonstucom;
-
+import java.util.HashMap;
+import static pokemonstucom.PokemonApp.pokemonlist;
+import pokemonstucom.Pokemon;
+import pokemonstucom.PokemonApp;
+import pokemonstucom.PokemonStucom;
+import pokemonstucom.PokemonAgua;
+import pokemonstucom.PokemonFuego;
+import pokemonstucom.PokemonPlanta;
 /**
  *
  * @author DAM
@@ -17,6 +24,11 @@ public class Totales extends javax.swing.JDialog {
     public Totales(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        nRegistrados.setText(String.valueOf(pokemonlist.size()));
+        nPokemonAgua.setText(String.valueOf(getPokemonSize("pokemonAgua")));
+        nPokemonPlanta.setText(String.valueOf(getPokemonSize("pokemonPlanta")));
+        nPokemonFuego.setText(String.valueOf(getPokemonSize("pokemonFuego")));
     }
 
     /**
@@ -28,22 +40,90 @@ public class Totales extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        nRegistrados = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        nPokemonAgua = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        nPokemonPlanta = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        nPokemonFuego = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("TOTALES");
+
+        jLabel2.setText("Nº de pokémon registrados");
+
+        nRegistrados.setText("jLabel3");
+
+        jLabel3.setText("Nº pokémon de tipo Agua");
+
+        nPokemonAgua.setText("jLabel6");
+
+        jLabel4.setText("Nº pokémon de tipo Planta");
+
+        nPokemonPlanta.setText("jLabel7");
+
+        jLabel5.setText("Nº pokémon de tipo Fuego");
+
+        nPokemonFuego.setText("jLabel8");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 443, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nPokemonFuego)
+                    .addComponent(nPokemonPlanta)
+                    .addComponent(nPokemonAgua)
+                    .addComponent(nRegistrados))
+                .addContainerGap(140, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                .addGap(58, 58, 58))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 365, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nRegistrados))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(nPokemonAgua))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(nPokemonPlanta))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(nPokemonFuego))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+  public static long getPokemonSize(String type) {
+        return pokemonlist.values().stream().filter(p -> p.getClass().getSimpleName().toLowerCase().equals(type)).count();
+    }
     /**
      * @param args the command line arguments
      */
@@ -87,5 +167,14 @@ public class Totales extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel nPokemonAgua;
+    private javax.swing.JLabel nPokemonFuego;
+    private javax.swing.JLabel nPokemonPlanta;
+    private javax.swing.JLabel nRegistrados;
     // End of variables declaration//GEN-END:variables
 }
