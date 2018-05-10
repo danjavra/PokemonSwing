@@ -19,14 +19,23 @@ public class PokemonFuego extends Pokemon {
 
     @Override
     public boolean capturable() {
+//        int r = new Random().nextInt(50)+10;
   
-      int r = new Random().nextInt((10 - 60) + 1) + 10;
-        
-        
+      int r = new Random().nextInt((60 - 10) + 1) + 10;
+         
         return (r + getPs()) > (getAtaque() + getDefensa());  
         
     }
     
+    @Override
+    public String efectivoContra() {
+        return "planta";
+    }
+
+    @Override
+    public String debilContra() {
+       return "agua";
+    }
 
       
 }

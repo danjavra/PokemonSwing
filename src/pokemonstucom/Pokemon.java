@@ -60,5 +60,6 @@ public abstract class Pokemon implements Capturable {
         return "Pokemon{" + "nombre=" + nombre + ", ataque=" + ataque + ", defensa=" + defensa + ", ps=" + ps + '}';
     }
     
-    
+    public abstract String efectivoContra ();
+    public abstract String debilContra();
 }

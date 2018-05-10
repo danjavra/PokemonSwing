@@ -8,6 +8,7 @@ package pokemonstucom;
 import static java.lang.Math.random;
 import java.util.Random;
 
+
 /**
  *
  * @author DAM
@@ -31,17 +32,21 @@ public class PokemonAgua extends Pokemon{
     }
 
     @Override
-   
-    
     public boolean capturable() {
         int r = new Random().nextInt((120 - 20) + 1) + 20;
-        
-        
+   
         return (r - getPs()) < getDefensa(); 
-        
         
     }
     
-    
+    @Override
+    public String efectivoContra() {
+        return "fuego";
+    }
+
+    @Override
+    public String debilContra() {
+        return "planta";
+    }
     
 }

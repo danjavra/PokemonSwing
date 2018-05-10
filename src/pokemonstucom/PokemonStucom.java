@@ -5,7 +5,7 @@
  */
 package pokemonstucom;
 
-import java.util.HashMap;
+import pokemonstucom.ListaPokemon;
 
 /**
  *
@@ -16,15 +16,19 @@ public class PokemonStucom {
     /**
      * @param args the command line arguments
      */
-    
-    public static HashMap<String,Pokemon> arrayPokemon = new HashMap<>();
-    
+
+    public static ListaPokemon Pokemon;
     public static void main(String[] args) {
         // TODO code application logic here
+        Pokemon = new ListaPokemon();
         PokemonApp principal = new PokemonApp();
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
     }
+
+
+  
     
+
     
 }

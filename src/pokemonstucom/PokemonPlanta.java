@@ -33,6 +33,18 @@ public class PokemonPlanta extends Pokemon{
         return "PokemonPlanta{" + "habitat=" + habitat + '}';
     }
 
+
+  @Override
+    public String efectivoContra() {
+        return "agua";
+    }
+
+
+  @Override
+    public String debilContra() {
+        return "fuego";
+    }
+    
     @Override
     public boolean capturable() {
        

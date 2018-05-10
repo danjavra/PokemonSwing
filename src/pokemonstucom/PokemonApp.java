@@ -133,7 +133,7 @@ public static HashMap<String,Pokemon> pokemonlist = new HashMap<>();
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
       if (pokemonlist.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No hay pokémon para mostrar", "Lista vacía", JOptionPane.ERROR_MESSAGE);
-       } else {  Modificar modificar = new Modificar(this, true);
+       } else {  ModificarPokemon modificar = new ModificarPokemon(this, true);
         modificar.setLocationRelativeTo(null);
         modificar.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -149,7 +149,7 @@ public static HashMap<String,Pokemon> pokemonlist = new HashMap<>();
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         if (pokemonlist.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No hay pokémon para mostrar", "Lista vacía", JOptionPane.ERROR_MESSAGE);
-       } else {Totales total = new Totales(this, true);
+       } else {Total total = new Total(this, true);
         total.setLocationRelativeTo(null);
         total.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed

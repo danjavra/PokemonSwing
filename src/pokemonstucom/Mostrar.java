@@ -1,42 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package pokemonstucom;
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-import static pokemonstucom.PokemonApp.pokemonlist;
-import pokemonstucom.Pokemon;
-import pokemonstucom.PokemonApp;
-import pokemonstucom.PokemonStucom;
-import pokemonstucom.PokemonAgua;
-import pokemonstucom.PokemonFuego;
-import pokemonstucom.PokemonPlanta;
-/**
- *
- * @author DAM
- */
-public class Mostrar extends javax.swing.JDialog {
 
-    ArrayList<Pokemon> pokedex = new ArrayList<>();
-    ArrayList<Pokemon> registrados;
-    int index = 0;
-    /**
-     * Creates new form Mostrar
-     */
+package pokemonstucom;
+
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import javax.swing.JTextField;
+import pokemonstucom.Pokemon;
+import pokemonstucom.PokemonAgua;
+import static pokemonstucom.PokemonApp.pokemonlist;
+import pokemonstucom.PokemonPlanta;
+import pokemonstucom.PokemonFuego;
+
+
+public class Mostrar extends javax.swing.JDialog {
+    
+        ArrayList<Pokemon> pokedex = new ArrayList<>();
+        ArrayList<Pokemon> registrado;
+        int index = 0;
+        
+
     public Mostrar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+       
         index = 0;
-        pokemonlist.values().forEach(pokemon -> pokedex.add(pokemon));
+        pokemonlist.values().forEach(poke -> pokedex.add(poke));
         
-        jLabel7.setVisible(false);
-        jLabel8.setVisible(false);
-        tipoHabitat.setVisible(false);
         tipoAgua.setVisible(false);
-        
+        habitat.setVisible(false);
+        tipoAguaLabel.setVisible(false);
+        habitatLabel.setVisible(false);
         
         if (pokedex.size() == 1) {
             prev.setVisible(false);
@@ -46,15 +40,12 @@ public class Mostrar extends javax.swing.JDialog {
             next.setVisible(true);
         }
         
-        mostrarOpcion(pokedex.get(index).getClass().getSimpleName().toLowerCase(), pokedex, index);
+        hideAndShow(pokedex.get(index).getClass().getSimpleName().toLowerCase(), pokedex, index);
         
         nombre.setText(pokedex.get(index).getNombre());
         ataque.setText(String.valueOf(pokedex.get(index).getAtaque()));
         defensa.setText(String.valueOf(pokedex.get(index).getDefensa()));
         ps.setText(String.valueOf(pokedex.get(index).getPs()));
-        
-    
-
         
     }
 
@@ -67,117 +58,31 @@ public class Mostrar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        listaTipo = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        sliderPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        nombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        ataque = new javax.swing.JTextField();
-        defensa = new javax.swing.JTextField();
-        ps = new javax.swing.JTextField();
-        volver = new javax.swing.JButton();
         prev = new javax.swing.JButton();
         next = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        tipoAgua = new javax.swing.JTextField();
-        tipoHabitat = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        listaTipo = new javax.swing.JComboBox<>();
+        nombre = new javax.swing.JLabel();
+        ataque = new javax.swing.JLabel();
+        defensa = new javax.swing.JLabel();
+        ps = new javax.swing.JLabel();
+        tipoAguaLabel = new javax.swing.JLabel();
+        tipoAgua = new javax.swing.JLabel();
+        habitatLabel = new javax.swing.JLabel();
+        habitat = new javax.swing.JLabel();
+        tipoPokemonLabel = new javax.swing.JLabel();
+        tipoPokemon = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         currentFilterText = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Nombre");
-
-        nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Ataque");
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Defensa");
-
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Puntos de salud");
-
-        ataque.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ataqueActionPerformed(evt);
-            }
-        });
-
-        defensa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                defensaActionPerformed(evt);
-            }
-        });
-
-        ps.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                psActionPerformed(evt);
-            }
-        });
-
-        volver.setBackground(new java.awt.Color(255, 204, 204));
-        volver.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        volver.setText("Volver");
-        volver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                volverActionPerformed(evt);
-            }
-        });
-
-        prev.setBackground(new java.awt.Color(255, 204, 204));
-        prev.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        prev.setText("Anterior");
-        prev.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                prevActionPerformed(evt);
-            }
-        });
-
-        next.setBackground(new java.awt.Color(255, 204, 204));
-        next.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        next.setText("Siguiente");
-        next.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Tipo de Pokemon");
-
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Tipo de agua");
-
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Tipo de habitat");
-
-        tipoAgua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipoAguaActionPerformed(evt);
-            }
-        });
-
-        tipoHabitat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipoHabitatActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("POKÉDEX");
-
-        listaTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Agua", "Planta", "Fuego" }));
+        listaTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos los pokemon:", "Agua", "Planta", "Fuego" }));
         listaTipo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 listaTipoItemStateChanged(evt);
@@ -189,156 +94,325 @@ public class Mostrar extends javax.swing.JDialog {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Mostrar Pokemons");
+
+        sliderPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jLabel2.setText("Ataque");
+
+        jLabel3.setText("Defensa");
+
+        jLabel4.setText("PS");
+
+        prev.setText("<");
+        prev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prevActionPerformed(evt);
+            }
+        });
+
+        next.setText(">");
+        next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Nombre:");
+
+        nombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        nombre.setText("jLabel6");
+
+        ataque.setText("jLabel7");
+
+        defensa.setText("jLabel8");
+
+        ps.setText("jLabel9");
+
+        tipoAguaLabel.setText("Tipo de agua");
+
+        tipoAgua.setText("jLabel7");
+
+        habitatLabel.setText("Habitat");
+
+        habitat.setText("jLabel8");
+
+        tipoPokemonLabel.setText("Tipo de pokémon");
+
+        tipoPokemon.setText("jLabel7");
+
+        jButton1.setText("Menu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout sliderPanelLayout = new javax.swing.GroupLayout(sliderPanel);
+        sliderPanel.setLayout(sliderPanelLayout);
+        sliderPanelLayout.setHorizontalGroup(
+            sliderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sliderPanelLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(sliderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sliderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(sliderPanelLayout.createSequentialGroup()
+                            .addGroup(sliderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel2))
+                            .addGap(89, 89, 89)
+                            .addGroup(sliderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(ataque, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(defensa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(sliderPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addGap(120, 120, 120)
+                            .addComponent(ps, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(sliderPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(sliderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, sliderPanelLayout.createSequentialGroup()
+                        .addComponent(habitatLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(habitat, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(sliderPanelLayout.createSequentialGroup()
+                        .addGroup(sliderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sliderPanelLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(tipoPokemonLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(sliderPanelLayout.createSequentialGroup()
+                                .addComponent(tipoAguaLabel)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(sliderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tipoAgua, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                            .addComponent(tipoPokemon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(71, 71, 71))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sliderPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(sliderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(sliderPanelLayout.createSequentialGroup()
+                        .addComponent(prev)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(next)))
+                .addGap(280, 280, 280))
+        );
+        sliderPanelLayout.setVerticalGroup(
+            sliderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sliderPanelLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(sliderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(nombre))
+                .addGap(44, 44, 44)
+                .addGroup(sliderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ataque)
+                    .addComponent(jLabel2)
+                    .addComponent(tipoPokemonLabel)
+                    .addComponent(tipoPokemon))
+                .addGap(18, 18, 18)
+                .addGroup(sliderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(sliderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(defensa)
+                        .addComponent(tipoAguaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tipoAgua)))
+                .addGap(18, 18, 18)
+                .addGroup(sliderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(sliderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ps)
+                        .addComponent(habitatLabel)
+                        .addComponent(habitat)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGroup(sliderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(next)
+                    .addComponent(prev))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+
         currentFilterText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        currentFilterText.setText("Listando todos los pokémon registrados...");
+        currentFilterText.setText("Lista de todos los pokémon registrados");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(54, 54, 54)
-                                .addComponent(ataque, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(defensa, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                                    .addComponent(ps, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(tipoAgua, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tipoHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(listaTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(43, 43, 43))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(volver, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(prev)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(next)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(sliderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(currentFilterText, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(175, 175, 175)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(91, 91, 91))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(currentFilterText, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(54, 54, 54))))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(44, 44, 44)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(54, 54, 54)
-                    .addComponent(nombre)
-                    .addGap(44, 44, 44)))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(listaTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(listaTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(76, 76, 76)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ataque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(defensa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipoAgua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(tipoHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(listaTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(currentFilterText, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(volver)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(next)
-                        .addComponent(prev)))
-                .addGap(50, 50, 50))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(120, 120, 120)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(383, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sliderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreActionPerformed
+    private void listaTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listaTipoItemStateChanged
 
-    private void ataqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ataqueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ataqueActionPerformed
+        
+        if (evt.getStateChange() == 1) {
+            
+            String currentText;
+            
+            switch (listaTipo.getSelectedItem().toString()) {
+                case "Agua":
+                    if (getFilteredArray("pokemonagua")) {
+                        currentText = "No existe pokemons de Agua registrados";
+                        sliderPanel.setVisible(false);
+                    } else {
+                        index = 0;
+                        currentText = "Listado de pokémon tipo Agua";
+                        nombre.setText(registrado.get(index).getNombre());
+                        ataque.setText(String.valueOf(registrado.get(index).getAtaque()));
+                        defensa.setText(String.valueOf(registrado.get(index).getDefensa()));
+                        ps.setText(String.valueOf(registrado.get(index).getPs()));
+                        if (registrado.get(index) instanceof PokemonAgua) {
+                           PokemonAgua pokeagua = (PokemonAgua) registrado.get(index);
+                           tipoAgua.setText(pokeagua.getTipoAgua());
+                           tipoAguaLabel.setVisible(true);
+                           tipoAgua.setVisible(true);
+                           habitat.setVisible(false);
+                           habitatLabel.setVisible(false);
+                        }
+                        
+                        tipoPokemon.setText("Agua");
+                        
+                        if (registrado.size() == 1) {
+                            prev.setVisible(false);
+                            next.setVisible(false);
+                        } else {
+                            prev.setVisible(true);
+                            next.setVisible(true);
+                        }
+                        sliderPanel.setVisible(true);
+                    }    
+                    break;
+                case "Planta":
+                    if (getFilteredArray("pokemonplanta")) {
+                        currentText = "No existe pokemons de Planta registrados";
+                        sliderPanel.setVisible(false);
+                    } else {
+                        index = 0;
+                        currentText = "Listado de pokémon tipo Planta";
+                        nombre.setText(registrado.get(index).getNombre());
+                        ataque.setText(String.valueOf(registrado.get(index).getAtaque()));
+                        defensa.setText(String.valueOf(registrado.get(index).getDefensa()));
+                        ps.setText(String.valueOf(registrado.get(index).getPs()));
+                        
+                        if (registrado.get(index) instanceof PokemonPlanta) {
+                           PokemonPlanta pokeplanta = (PokemonPlanta) registrado.get(index);
+                           habitat.setText(pokeplanta.getHabitat());
+                           habitatLabel.setVisible(true);
+                           habitat.setVisible(true);
+                           tipoAguaLabel.setVisible(false);
+                           tipoAgua.setVisible(false);
+                        }
+                        
+                        tipoPokemon.setText("Planta");
+                        
+                        if (registrado.size() == 1) {
+                            prev.setVisible(false);
+                            next.setVisible(false);
+                        } else {
+                            prev.setVisible(true);
+                            next.setVisible(true);
+                        }
+                        sliderPanel.setVisible(true);
+                    }
+                    break;
+                case "Fuego":
+                    if (getFilteredArray("pokemonfuego")) {
+                        currentText = "No existe pokemons de Fuego registrados";
+                        sliderPanel.setVisible(false);
+                    } else {
+                        currentText = "Listado de pokémon tipo Fuego";
+                        index = 0;
+                        nombre.setText(registrado.get(index).getNombre());
+                        ataque.setText(String.valueOf(registrado.get(index).getAtaque()));
+                        defensa.setText(String.valueOf(registrado.get(index).getDefensa()));
+                        ps.setText(String.valueOf(registrado.get(index).getPs()));
+                        
+                        habitatLabel.setVisible(false);
+                        habitat.setVisible(false);
+                        tipoAguaLabel.setVisible(false);
+                        tipoAgua.setVisible(false);
+                        
+                        tipoPokemon.setText("Fuego");
+                        
+                        if (registrado.size() == 1) {
+                            prev.setVisible(false);
+                            next.setVisible(false);
+                        } else {
+                            prev.setVisible(true);
+                            next.setVisible(true);
+                        }
+                        sliderPanel.setVisible(true);
+                    }
+                    break;
+                default:
+                    currentText = "Lista de todos los pokémon registrados";
+                    index = 0;
+                    hideAndShow(pokedex.get(index).getClass().getSimpleName().toLowerCase(), pokedex, index);
+                    nombre.setText(pokedex.get(index).getNombre());
+                    ataque.setText(String.valueOf(pokedex.get(index).getAtaque()));
+                    defensa.setText(String.valueOf(pokedex.get(index).getDefensa()));
+                    ps.setText(String.valueOf(pokedex.get(index).getPs()));
+                    if (pokedex.size() == 1) {
+                        prev.setVisible(false);
+                        next.setVisible(false);
+                    } else {
+                        prev.setVisible(true);
+                        next.setVisible(true);
+                    }
+                    sliderPanel.setVisible(true);
+                    
+            }
+            currentFilterText.setText(currentText);
+        }
 
-    private void defensaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_defensaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_defensaActionPerformed
-
-    private void psActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_psActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_psActionPerformed
-
-    private void tipoAguaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoAguaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tipoAguaActionPerformed
-
-    private void tipoHabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoHabitatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tipoHabitatActionPerformed
+        
+    }//GEN-LAST:event_listaTipoItemStateChanged
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
-
-        if (listaTipo.getSelectedItem().equals(" ")) {
+        if (listaTipo.getSelectedItem().equals("Todos los pokemon:")) {
 
             if (index < pokedex.size() - 1) {
                 index++;
                 
-                mostrarOpcion(pokedex.get(index).getClass().getSimpleName().toLowerCase(), pokedex, index);
+                hideAndShow(pokedex.get(index).getClass().getSimpleName().toLowerCase(), pokedex, index);
                 
                 nombre.setText(pokedex.get(index).getNombre());
                 ataque.setText(String.valueOf(pokedex.get(index).getAtaque()));
@@ -346,217 +420,97 @@ public class Mostrar extends javax.swing.JDialog {
                 ps.setText(String.valueOf(pokedex.get(index).getPs()));
             }
         } else {
-            if (index < registrados.size() - 1) {
+            if (index < registrado.size() - 1) {
                 index++;
-                mostrarOpcion(registrados.get(index).getClass().getSimpleName().toLowerCase(), registrados, index);
+                hideAndShow(registrado.get(index).getClass().getSimpleName().toLowerCase(), registrado, index);
                 
-                nombre.setText(registrados.get(index).getNombre());
-                ataque.setText(String.valueOf(registrados.get(index).getAtaque()));
-                defensa.setText(String.valueOf(registrados.get(index).getDefensa()));
-                ps.setText(String.valueOf(registrados.get(index).getPs()));
+                nombre.setText(registrado.get(index).getNombre());
+                ataque.setText(String.valueOf(registrado.get(index).getAtaque()));
+                defensa.setText(String.valueOf(registrado.get(index).getDefensa()));
+                ps.setText(String.valueOf(registrado.get(index).getPs()));
             }
         }
         
+        
     }//GEN-LAST:event_nextActionPerformed
 
+    
     private void prevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevActionPerformed
-
-        if (listaTipo.getSelectedItem().equals(" ")) {
+       
+        if (listaTipo.getSelectedItem().equals("Todos los pokemon:")) {
 
             if (index > 0) {
                 index--;
                 
-                 mostrarOpcion(registrados.get(index).getClass().getSimpleName().toLowerCase(), registrados, index);
+                hideAndShow(pokedex.get(index).getClass().getSimpleName().toLowerCase(), pokedex, index);
                 
-                nombre.setText(registrados.get(index).getNombre());
-                ataque.setText(String.valueOf(registrados.get(index).getAtaque()));
-                defensa.setText(String.valueOf(registrados.get(index).getDefensa()));
-                ps.setText(String.valueOf(registrados.get(index).getPs()));
+                nombre.setText(pokedex.get(index).getNombre());
+                ataque.setText(String.valueOf(pokedex.get(index).getAtaque()));
+                defensa.setText(String.valueOf(pokedex.get(index).getDefensa()));
+                ps.setText(String.valueOf(pokedex.get(index).getPs()));
             }
         } else {
             if (index > 0) {
                 index--;
                 
-                 mostrarOpcion(registrados.get(index).getClass().getSimpleName().toLowerCase(), registrados, index);
+                hideAndShow(registrado.get(index).getClass().getSimpleName().toLowerCase(), registrado, index);
                 
-                nombre.setText(registrados.get(index).getNombre());
-                ataque.setText(String.valueOf(registrados.get(index).getAtaque()));
-                defensa.setText(String.valueOf(registrados.get(index).getDefensa()));
-                ps.setText(String.valueOf(registrados.get(index).getPs()));
+                nombre.setText(registrado.get(index).getNombre());
+                ataque.setText(String.valueOf(registrado.get(index).getAtaque()));
+                defensa.setText(String.valueOf(registrado.get(index).getDefensa()));
+                ps.setText(String.valueOf(registrado.get(index).getPs()));
             }
         }
 
     }//GEN-LAST:event_prevActionPerformed
 
-    private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
-
-        dispose();
-    }//GEN-LAST:event_volverActionPerformed
-
-    private void listaTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listaTipoItemStateChanged
-
-        if (evt.getStateChange() == 1) {
-
-            String currentText;
-
-            switch (listaTipo.getSelectedItem().toString()) {
-                case "Agua":
-                if (getRegistrados("pokemonAgua")) {
-                    currentText = "No hay pokemon de Agua registrados";
-                   //sliderPanel.setVisible(false);
-                } else {
-                    index = 0;
-                    currentText = "Listando pokémon tipo Agua";
-                    nombre.setText(registrados.get(index).getNombre());
-                    ataque.setText(String.valueOf(registrados.get(index).getAtaque()));
-                    defensa.setText(String.valueOf(registrados.get(index).getDefensa()));
-                    ps.setText(String.valueOf(registrados.get(index).getPs()));
-                    if (registrados.get(index) instanceof PokemonAgua) {
-                        PokemonAgua pokeagua = (PokemonAgua) registrados.get(index); 
-                        jLabel7.setVisible(true);
-                        tipoAgua.setVisible(true);
-                        tipoHabitat.setVisible(false);
-                        jLabel8.setVisible(false);
-                    }
-
-                    if (registrados.size() == 1) {
-                        prev.setVisible(false);
-                        next.setVisible(false);
-                    } else {
-                        prev.setVisible(true);
-                        next.setVisible(true);
-                    }
-                    //sliderPanel.setVisible(true);
-                }
-                break;
-                case "Planta":
-                if (getRegistrados("pokemonPlanta")) {
-                    currentText = "No hay pokemon de Planta registrados";
-                    //sliderPanel.setVisible(false);
-                } else {
-                    index = 0;
-                    currentText = "Listando pokémon tipo Planta";
-                    nombre.setText(registrados.get(index).getNombre());
-                    ataque.setText(String.valueOf(registrados.get(index).getAtaque()));
-                    defensa.setText(String.valueOf(registrados.get(index).getDefensa()));
-                    ps.setText(String.valueOf(registrados.get(index).getPs()));
-
-                    if (registrados.get(index) instanceof PokemonPlanta) {
-                        PokemonPlanta pokeplanta = (PokemonPlanta) registrados.get(index);
-                        jLabel8.setVisible(true);
-                        tipoHabitat.setVisible(true);
-                        jLabel7.setVisible(false);
-                        tipoAgua.setVisible(false);
-                    }
-
-                    if (registrados.size() == 1) {
-                        prev.setVisible(false);
-                        next.setVisible(false);
-                    } else {
-                        prev.setVisible(true);
-                        next.setVisible(true);
-                    }
-                    //sliderPanel.setVisible(true);
-                }
-                break;
-                case "Fuego":
-                if (getRegistrados("pokemonfuego")) {
-                    currentText = "No hay pokemon de Fuego registrados";
-                    //sliderPanel.setVisible(false);
-                } else {
-                    currentText = "Listando pokémon tipo Fuego";
-                    index = 0;
-                    nombre.setText(registrados.get(index).getNombre());
-                    ataque.setText(String.valueOf(registrados.get(index).getAtaque()));
-                    defensa.setText(String.valueOf(registrados.get(index).getDefensa()));
-                    ps.setText(String.valueOf(registrados.get(index).getPs()));
-
-                   jLabel8.setVisible(false);
-                    tipoHabitat.setVisible(false);
-                    jLabel7.setVisible(false);
-                    tipoAgua.setVisible(false);
-
-                    
-
-                    if (registrados.size() == 1) {
-                        prev.setVisible(false);
-                        next.setVisible(false);
-                    } else {
-                        prev.setVisible(true);
-                        next.setVisible(true);
-                    }
-                   //sliderPanel.setVisible(true);
-                }
-                break;
-                default:
-                currentText = "Listado a todos los pokémon registrados...";
-                index = 0;
-                mostrarOpcion(pokedex.get(index).getClass().getSimpleName().toLowerCase(), pokedex, index);
-                nombre.setText(pokedex.get(index).getNombre());
-                ataque.setText(String.valueOf(pokedex.get(index).getAtaque()));
-                defensa.setText(String.valueOf(pokedex.get(index).getDefensa()));
-                ps.setText(String.valueOf(pokedex.get(index).getPs()));
-                if (pokedex.size() == 1) {
-                    prev.setVisible(false);
-                    next.setVisible(false);
-                } else {
-                    prev.setVisible(true);
-                    next.setVisible(true);
-                }
-               // sliderPanel.setVisible(true);
-
-            }
-            currentFilterText.setText(currentText);
-        }
-
-    }//GEN-LAST:event_listaTipoItemStateChanged
-
     private void listaTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaTipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_listaTipoActionPerformed
-    public void mostrarOpcion(String tipo, ArrayList<Pokemon> op, int i) {
-        //Este switch mostrará o ocultará labels i textos según el tipo escogido.
-        switch (tipo) {
-                    case "Agua":
-                        //Mostramos las opciones extras en caso de pokemon agua.
-                        PokemonAgua agua = (PokemonAgua) op.get(i);
-                        tipoAgua.setText(agua.getTipoAgua());
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    
+    public void hideAndShow(String tipo, ArrayList<Pokemon> arr, int i) {
+                switch (tipo) {
+                    case "pokemonagua":
+                        PokemonAgua pokeagua = (PokemonAgua) arr.get(i);
+                        tipoAgua.setText(pokeagua.getTipoAgua());
+                        tipoAguaLabel.setVisible(true);
                         tipoAgua.setVisible(true);
-                        jLabel7.setVisible(true);
-                        // Ocultamos las demas opciones
-                        tipoHabitat.setVisible(false);
-                        jLabel8.setVisible(false);
-                        
+                        habitat.setVisible(false);
+                        habitatLabel.setVisible(false);
+                        tipoPokemon.setText("Agua");
                         break;
-                    case "Planta":
-                        //Mostramos las opciones extras en caso de pokemon planta.
-                        PokemonPlanta planta = (PokemonPlanta) op.get(i);
-                        tipoHabitat.setText(planta.getHabitat());
-                        jLabel8.setVisible(true);
-                        tipoHabitat.setVisible(true);
-                        // Ocultamos las demas opciones
-                        jLabel7.setVisible(false);
+                    case "pokemonplanta":
+                        PokemonPlanta pokeplanta = (PokemonPlanta) arr.get(i);
+                        habitat.setText(pokeplanta.getHabitat());
+                        habitatLabel.setVisible(true);
+                        habitat.setVisible(true);
+                        tipoAguaLabel.setVisible(false);
                         tipoAgua.setVisible(false);
-                        
+                        tipoPokemon.setText("Planta");
                         break;
-                    case "Fuego":
-                        // En caso de pokemon fuego ocultamos las demás opciones.
-                        jLabel8.setVisible(false);
-                        tipoHabitat.setVisible(false);
-                        jLabel7.setVisible(false);
+                    case "pokemonfuego":
+                        habitatLabel.setVisible(false);
+                        habitat.setVisible(false);
+                        tipoAguaLabel.setVisible(false);
                         tipoAgua.setVisible(false);
-                        
+                        tipoPokemon.setText("Fuego");
                         break;
                 }
     }
-     
-    public boolean getRegistrados(String tipo) {
-        registrados = pokedex
+    
+    public boolean getFilteredArray(String tipo) {
+        registrado = pokedex
                 .stream()
-                .filter(pokemon -> pokemon.getClass().getSimpleName().toLowerCase().equals(tipo))
+                .filter(poke -> poke.getClass().getSimpleName().toLowerCase().equals(tipo))
                 .collect(Collectors.toCollection(ArrayList::new));
-        return registrados.isEmpty();
+        return registrado.isEmpty();
     }
+    
     /**
      * @param args the command line arguments
      */
@@ -583,6 +537,7 @@ public class Mostrar extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(Mostrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -600,24 +555,26 @@ public class Mostrar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ataque;
+    private javax.swing.JLabel ataque;
     private javax.swing.JLabel currentFilterText;
-    private javax.swing.JTextField defensa;
+    private javax.swing.JLabel defensa;
+    private javax.swing.JLabel habitat;
+    private javax.swing.JLabel habitatLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JComboBox<String> listaTipo;
     private javax.swing.JButton next;
-    private javax.swing.JTextField nombre;
+    private javax.swing.JLabel nombre;
     private javax.swing.JButton prev;
-    private javax.swing.JTextField ps;
-    private javax.swing.JTextField tipoAgua;
-    private javax.swing.JTextField tipoHabitat;
-    private javax.swing.JButton volver;
+    private javax.swing.JLabel ps;
+    private javax.swing.JPanel sliderPanel;
+    private javax.swing.JLabel tipoAgua;
+    private javax.swing.JLabel tipoAguaLabel;
+    private javax.swing.JLabel tipoPokemon;
+    private javax.swing.JLabel tipoPokemonLabel;
     // End of variables declaration//GEN-END:variables
 }
